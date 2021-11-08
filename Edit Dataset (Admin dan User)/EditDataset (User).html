@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Preview Dataset</title>
+    <title>Edit Dataset</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -34,14 +34,15 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="mt-4">
-                    <h1>Preview Dataset</h1>
+                    <h1>Edit Dataset</h1>
                     <hr style="max-width:65%; margin-left:0;">
                 </div>
 
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="inputJudul">Judul</label>
-                        <input type="text" class="form-control" id="inputJudul" name="inpJudul" placeholder="Judul..">
+                        <input type="text" class="form-control" id="inputJudul" name="inpJudul"
+                            placeholder="Masukkan judul">
                     </div>
                     <div class="form-group">
                         <label for="inputDeskripsi">Deskripsi</label>
@@ -50,20 +51,25 @@
                     <div class="form-group">
                         <label for="inputKategori">Kategori</label>
                         <input type="text" class="form-control" id="inputKategori" name="inpKategori"
-                            placeholder="Kategori..">
+                            placeholder="Masukkan kategori">
                     </div>
                     <div class="form-group">
                         <label for="inputSumber">Sumber</label>
                         <input type="text" class="form-control" id="inputSumber" name="inpSumber"
-                            placeholder="Sumber..">
+                            placeholder="Masukkan sumber">
                     </div>
                     <div class="form-group">
                         <label for="inputJlhData">Jumlah Data</label>
                         <input type="text" class="form-control" id="inputJlhData" name="inpJlhData"
-                            placeholder="Jumlah data..">
+                            placeholder="Masukkan jumlah data">
                     </div>
-                    <button type="submit" class="btn tombol" name="preview_dataset" value="Save"
-                        style="margin-bottom:3rem; background-color: red; color:white;">Download</button><br>
+                    <div class="form-group">
+                        <label for="inputLinkData">Link Data (Gdrive)</label>
+                        <input type="text" class="form-control" id="inputLinkData" name="inpLinkData"
+                            placeholder="Masukkan link data">
+                    </div>
+                    <button type="submit" class="btn tombol" name="edit_dataset" value="Save"
+                        style="margin-bottom:3rem; background-color: red; color:white;">Submit</button><br>
                 </form>
             </div>
         </div>
