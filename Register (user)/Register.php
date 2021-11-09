@@ -1,3 +1,27 @@
+<?php
+  include 'koneksi.php';
+
+    if(isset($_POST['signup'])){
+  
+  	  	//proses insert
+          $insert = mysqli_query($connect, "INSERT INTO user VALUES (
+                    '".$generateId."',
+				            '".date('Y-m-d')."',
+				            '".$_POST['name']."',
+				            '".$_POST['email']."'
+                    '".$_POST['pass']."'
+	)");
+
+		if($insert){
+			echo '<script>window.location="Register.php"</script>';
+		}else{
+			echo "huft" .mysqli_error($conn);
+		}
+
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,6 +46,7 @@
   </div>
 
   <!-- Sign up form -->
+  <form action="" method="post">
   <section class="signup">
     <div class="container">
       <div class="signup-content">
@@ -46,12 +71,13 @@
           </form>
         </div>
         <div class="signup-image">
-          <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+          <figure><img src="images/signup-image.jpg" alt="sign up image"></figure>
           <a href="#" class="signup-image-link">I am already member</a>
         </div>
       </div>
     </div>
   </section>
+</form>
 
   <!--Footer-->
 
