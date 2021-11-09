@@ -1,268 +1,96 @@
-  /*Form*/
+<?php
+  include 'koneksi.php';
 
-  /* @extend display-flex; */
-  display-flex,
-  .display-flex,
-  .display-flex-center,
-  .signup-content,
-  .signin-content {
-    display: flex;
-    display: -webkit-flex;
-  }
+    if(isset($_POST['signup'])){
+  
+  	  	//proses insert
+          $insert = mysqli_query($connect, "INSERT INTO user VALUES (
+                    '".$generateId."',
+				            '".date('Y-m-d')."',
+				            '".$_POST['name']."',
+				            '".$_POST['email']."'
+                    '".$_POST['pass']."'
+	)");
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    appearance: none !important;
-    -moz-appearance: none !important;
-    -webkit-appearance: none !important;
-    -o-appearance: none !important;
-    -ms-appearance: none !important;
-    margin: 0;
-  }
+		if($insert){
+			echo '<script>window.location="Register.php"</script>';
+		}else{
+			echo "huft" .mysqli_error($conn);
+		}
 
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: none;
-    box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    -o-box-shadow: none !important;
-    -ms-box-shadow: none !important;
-  }
+	}
 
+?>
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+<!DOCTYPE html>
+<html>
 
-  figure {
-    margin: 0;
-  }
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="Register.css">
+  <link rel="stylesheet" href="../css/header-footer-fixed.css">
+</head>
 
-  p {
-    margin-bottom: 0px;
-    font-size: 15px;
-    color: #777;
-  }
+<body>
+  <div class="header">
+    <div class="header-logo">DCamp</div>
+    <div class="header-list">
+      <ul>
+        <li><a href="">Logout</a> </li>
+        <li><a href="">Dataset</a> </li>
+        <li><a href="">Pengguna</a> </li>
+        <li><a href="">Beranda</a> </li>
+      </ul>
+    </div>
+  </div>
 
-  h2 {
-    line-height: 1.66;
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    color: #222;
-    font-family: -apple-system, BlinkMacSystemFont,
-      'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 36px;
-  }
+  <!-- Sign up form -->
+  <form action="" method="post">
+  <section class="signup">
+    <div class="container">
+      <div class="signup-content">
+        <div class="signup-form">
+          <h2 class="form-title">Sign up</h2>
+          <form method="POST" class="register-form" id="register-form">
+            <div class="form-group">
+              <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input type="text" name="name" id="name" placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="zmdi zmdi-email"></i></label>
+              <input type="email" name="email" id="email" placeholder="Your Email" />
+            </div>
+            <div class="form-group">
+              <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+              <input type="password" name="pass" id="pass" placeholder="Password" />
+            </div>
+            <div class="form-group form-button">
+              <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+            </div>
+          </form>
+        </div>
+        <div class="signup-image">
+          <figure><img src="images/signup-image.jpg" alt="sign up image"></figure>
+          <a href="#" class="signup-image-link">I am already member</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
 
-  .main {
-    background: #f8f8f8;
-    padding: 150px 100px;
-  }
+  <!--Footer-->
 
-  .clear {
-    clear: both;
-  }
+  <div class="footer">
+    <div class="footer-place">
+      Universitas Lambung Mangkurat <br>
+      Jl. Brigjen H. Hasan Basri Kota Banjarmasin 70123 <br>
+      Telp. 0511-3306671
+    </div>
+    <div class="footer-list">
+      Copyright &copy; DCamp 2021
+    </div>
+  </div>
+</body>
 
-  .container {
-    width: 700px;
-    background: #fff;
-    margin: 0 auto;
-    box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -o-border-radius: 20px;
-    -ms-border-radius: 20px;
-  }
-
-  .signup {
-    margin-top: 100px;
-    margin-bottom: 170px;
-  }
-
-  .signup-content {
-    padding: 75px 0;
-  }
-
-  .signup-form,
-  .signup-image,
-  .signin-form,
-  .signin-image {
-    width: 50%;
-    overflow: hidden;
-  }
-
-  .signup-image {
-    margin: 0 55px;
-  }
-
-  .form-title {
-    margin-bottom: 33px;
-  }
-
-  .signup-image {
-    margin-top: 45px;
-  }
-
-  figure {
-    margin-bottom: 50px;
-    text-align: center;
-  }
-
-  .form-submit {
-    display: inline-block;
-    background: #ff0000;
-    color: #fff;
-    border-bottom: none;
-    width: auto;
-    padding: 15px 39px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-    margin-top: 25px;
-    cursor: pointer;
-  }
-
-  .form-submit:hover {
-    background: #ff0000;
-  }
-
-  #signin {
-    margin-top: 16px;
-  }
-
-  .signup-image-link {
-    font-size: 14px;
-    color: #222;
-    display: block;
-    text-align: center;
-  }
-
-  .signup-form {
-    margin-left: 75px;
-    margin-right: 75px;
-    padding-left: 34px;
-  }
-
-  .register-form {
-    width: 100%;
-  }
-
-  .form-group {
-    position: relative;
-    margin-bottom: 25px;
-    overflow: hidden;
-  }
-
-  .form-group:last-child {
-    margin-bottom: 0px;
-  }
-
-  input {
-    width: 100%;
-    display: block;
-    border: none;
-    border-bottom: 1px solid #999;
-    padding: 6px 30px;
-    font-family: -apple-system, BlinkMacSystemFont,
-      'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    box-sizing: border-box;
-  }
-
-  input::-webkit-input-placeholder {
-    color: #999;
-  }
-
-  input::-moz-placeholder {
-    color: #999;
-  }
-
-  input:-ms-input-placeholder {
-    color: #999;
-  }
-
-  input:-moz-placeholder {
-    color: #999;
-  }
-
-  input:focus {
-    border-bottom: 1px solid #222;
-  }
-
-  input:focus::-webkit-input-placeholder {
-    color: #222;
-  }
-
-  input:focus::-moz-placeholder {
-    color: #222;
-  }
-
-  input:focus:-ms-input-placeholder {
-    color: #222;
-  }
-
-  input:focus:-moz-placeholder {
-    color: #222;
-  }
-
-  .signin-form {
-    margin-right: 90px;
-    margin-left: 80px;
-  }
-
-  .signin-image {
-    margin-left: 110px;
-    margin-right: 20px;
-    margin-top: 10px;
-  }
-
-  .signup-form {
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 0px;
-    /* box-sizing: border-box; */
-    padding: 0 30px;
-  }
-
-  .signin-image {
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 50px;
-    order: 2;
-    -moz-order: 2;
-    -webkit-order: 2;
-    -o-order: 2;
-    -ms-order: 2;
-  }
-
-  .signup-form,
-  .signup-image,
-  .signin-form,
-  .signin-image {
-    width: auto;
-  }
-
-  .form-button {
-    text-align: center;
-  }
-
-  .signin-form {
-    order: 1;
-    -moz-order: 1;
-    -webkit-order: 1;
-    -o-order: 1;
-    -ms-order: 1;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding: 0 30px;
-  }
+</html>
