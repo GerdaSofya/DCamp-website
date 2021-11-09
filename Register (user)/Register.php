@@ -15,7 +15,7 @@
 		if($insert){
 			echo '<script>window.location="Register.php"</script>';
 		}else{
-			echo "huft" .mysqli_error($conn);
+			echo "huft" .mysqli_error($connect);
 		}
 
 	}
