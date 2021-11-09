@@ -5,11 +5,11 @@
   
   	  	//proses insert
           $insert = mysqli_query($connect, "INSERT INTO user VALUES (
-                    '".$generateId."',
-				            '".date('Y-m-d')."',
-				            '".$_POST['name']."',
-				            '".$_POST['email']."'
-                    '".$_POST['pass']."'
+                    	'".$generateId."',
+			'".date('Y-m-d')."',
+			'".$_POST['name']."',
+			'".$_POST['email']."'
+                    	'".$_POST['pass']."'
 	)");
 
 		if($insert){
