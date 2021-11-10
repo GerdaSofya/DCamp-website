@@ -50,7 +50,7 @@ form.example::after {
   /* max-width: 100%; */
   max-width: 1400px;
   margin-right: -20px;
-  background-image: url(gambar.jpg);
+  background-image: url(../Beranda/gambar.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
