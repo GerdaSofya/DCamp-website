@@ -1,25 +1,31 @@
 <?php
-  include '../koneksi.php';
+  include 'koneksi.php'; 
 
-    if(isset($_POST['signup'])){
-  
-  	  	//proses insert
-          $insert = mysqli_query($connect, "INSERT INTO user VALUES (
-                    	'".$generateId."',
-			'".date('Y-m-d')."',
-			'".$_POST['name']."',
-			'".$_POST['email']."'
-                    	'".$_POST['pass']."'
-	)");
+    if (isset($_POST['signup'])){
 
-		if($insert){
-			echo '<script>window.location="Register.php"</script>';
-		}else{
-			echo "huft" .mysqli_error($connect);
-		}
-
-	}
-
+      $getMaxId = mysqli_query($connect, "SELECT MAX(RIGHT(id_user, 5)) AS id FROM register");
+      $d = mysqli_fetch_object($getMaxId);
+      $generateId = 'P'.date('Y').sprintf("%05s", $d->id + 1);
+      
+      //proses insert
+		  $insert = mysqli_query($connect, "INSERT INTO register VALUES (
+              '".$generateId."',
+              '".date('Y-m-d')."',
+              '".$_POST['name']."',
+              '".$_POST['email']."',
+              '".$_POST['pass']."'
+              )");
+        
+              if($insert){
+                echo "<script>
+                      alert('Register Berhasil !');
+                      document.location.href = 'Register.php';
+                      </script>";
+              }else{
+                echo  'Register Gagal !'
+                      .mysqli_error($connect);
+              }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +34,7 @@
 <head>
   <meta charset="utf-8">
   <title>Register</title>
-  <link rel="stylesheet" href="../css/Register.css">
+  <link rel="stylesheet" href="Register.css">
   <link rel="stylesheet" href="../css/header-footer-fixed.css">
 </head>
 
@@ -71,7 +77,7 @@
           </form>
         </div>
         <div class="signup-image">
-          <figure><img src="../Register (user)/Images/signup-image.jpg" alt="sign up image"></figure>
+          <figure><img src="images/signup-image.jpg" alt="sign up image"></figure>
           <a href="#" class="signup-image-link">I am already member</a>
         </div>
       </div>
