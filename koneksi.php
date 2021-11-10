@@ -6,7 +6,7 @@
 
 $dbhost = 'sql105.epizy.com'; 
 $dbuser = 'epiz_30331140';
-$dbpass = 'undabungas';
+$dbpass = 'FAzISGrVZToiZ';
 $dbname = 'epiz_30331140_dcampdb';
 
 $connect = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die('koneksi gagal');
